@@ -1,23 +1,23 @@
-import {GraphQLInt, GraphQLObjectType} from "graphql";
+import {GraphQLInt, GraphQLNonNull, GraphQLObjectType} from "graphql";
 
 export const BalanceGraphQLType = new GraphQLObjectType({
   name: 'Balance',
   fields: () => ({
-    id: {type: GraphQLInt},
-    userId: {type: GraphQLInt},
-    deposit: {type: GraphQLInt},
-    happinessRate: {type: GraphQLInt},
-    loan: {type: GraphQLInt},
-    investment: {type: InvestmentGraphQLType}
+    id: {type: new GraphQLNonNull(GraphQLInt)},
+    userId: {type: new GraphQLNonNull(GraphQLInt)},
+    deposit: {type: new GraphQLNonNull(GraphQLInt)},
+    happinessRate: {type: new GraphQLNonNull(GraphQLInt)},
+    loan: {type: new GraphQLNonNull(GraphQLInt)},
+    investment: {type: new GraphQLNonNull(InvestmentGraphQLType)}
   })
 })
 
 export const InvestmentGraphQLType = new GraphQLObjectType({
   name: 'Investment',
   fields: () => ({
-    realEstate: {type: GraphQLInt},
-    stocks: {type: GraphQLInt},
-    bonds: {type: GraphQLInt}
+    realEstate: {type: new GraphQLNonNull(GraphQLInt)},
+    stocks: {type: new GraphQLNonNull(GraphQLInt)},
+    bonds: {type: new GraphQLNonNull(GraphQLInt)}
   })
 })
 

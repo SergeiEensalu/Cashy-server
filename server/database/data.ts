@@ -19,6 +19,54 @@ const works = [
   }
 ]
 
+const stocks = [
+  {
+    "id": 1,
+    "name": "Apple Inc",
+    "ticker": "AAPL",
+    "price": 100,
+    "status": "ACTIVE",
+  },  {
+    "id": 2,
+    "name": "Microsoft Corporation",
+    "ticker": "MSFT",
+    "price": 50,
+    "status": "ACTIVE",
+  },
+]
+
+const realEstate = [
+  {
+    "id": 1,
+    "name": "Viru tn 24, Tallinn",
+    "ticker": "",
+    "price": 5784,
+    "status": "ACTIVE",
+  },  {
+    "id": 2,
+    "name": "The Delta Centre of the University of Tartu",
+    "ticker": "",
+    "price": 52121,
+    "status": "ACTIVE",
+  },
+]
+
+const bonds = [
+  {
+    "id": 1,
+    "name": "Inbank bonds",
+    "ticker": "InbankBonds",
+    "price": 3,
+    "status": "ACTIVE",
+  },  {
+    "id": 2,
+    "name": "LHV bonds",
+    "ticker": "LHVBonds",
+    "price": 12,
+    "status": "ACTIVE",
+  },
+]
+
 const users = [
   {
     "id": 1,
@@ -66,5 +114,8 @@ const balance = [
 module.exports = {
   works,
   users,
-  balance
+  balance,
+  stocks,
+  realEstate,
+  bonds
 }
