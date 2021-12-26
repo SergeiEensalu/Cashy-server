@@ -1,4 +1,10 @@
-const works = [
+import {BalanceInterface} from "../interface/balance";
+import {UserInterface} from "../interface/user";
+import {AssetsInterface, AssetsStatusEnum} from "../interface/assets";
+import {WorkInterface} from "../interface/work";
+import {ActionEnum, DealParentTypeEnum, HistoryInterface} from "../interface/history";
+
+const works: WorkInterface[] = [
   {
     "id": 1,
     "name": "Bolt Food",
@@ -19,55 +25,55 @@ const works = [
   }
 ]
 
-const stocks = [
+const stocks: AssetsInterface[] = [
   {
     "id": 1,
     "name": "Apple Inc",
     "ticker": "AAPL",
     "price": 100,
-    "status": "ACTIVE",
+    "status": AssetsStatusEnum.ACTIVE,
   },  {
     "id": 2,
     "name": "Microsoft Corporation",
     "ticker": "MSFT",
     "price": 50,
-    "status": "ACTIVE",
+    "status": AssetsStatusEnum.ACTIVE,
   },
 ]
 
-const realEstate = [
+const realEstate: AssetsInterface[] = [
   {
     "id": 1,
     "name": "Viru tn 24, Tallinn",
     "ticker": "",
     "price": 5784,
-    "status": "ACTIVE",
+    "status": AssetsStatusEnum.ACTIVE,
   },  {
     "id": 2,
     "name": "The Delta Centre of the University of Tartu",
     "ticker": "",
     "price": 52121,
-    "status": "ACTIVE",
+    "status": AssetsStatusEnum.ACTIVE,
   },
 ]
 
-const bonds = [
+const bonds: AssetsInterface[] = [
   {
     "id": 1,
     "name": "Inbank bonds",
     "ticker": "InbankBonds",
     "price": 3,
-    "status": "ACTIVE",
+    "status": AssetsStatusEnum.ACTIVE,
   },  {
     "id": 2,
     "name": "LHV bonds",
     "ticker": "LHVBonds",
     "price": 12,
-    "status": "ACTIVE",
+    "status": AssetsStatusEnum.ACTIVE,
   },
 ]
 
-const users = [
+const users: UserInterface[] = [
   {
     "id": 1,
     "firstName": "Sergei",
@@ -84,7 +90,7 @@ const users = [
   }
 ]
 
-const balance = [
+const balance: BalanceInterface[] = [
   {
     "id": 1,
     "userId": 1,
@@ -111,11 +117,23 @@ const balance = [
   }
 ]
 
+const history: HistoryInterface[] = [{
+  id: 1,
+  userId: 1,
+  date: "26.12.2021",
+  deal: {
+    parentId: 1,
+    parentType: DealParentTypeEnum.STOCKS,
+    action: ActionEnum.BUY,
+  }
+}];
+
 module.exports = {
   works,
   users,
   balance,
   stocks,
   realEstate,
-  bonds
+  bonds,
+  history,
 }

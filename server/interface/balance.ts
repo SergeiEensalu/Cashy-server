@@ -1,9 +1,9 @@
-import {GraphQLInt, GraphQLNonNull, GraphQLObjectType} from "graphql";
+import {GraphQLID, GraphQLInt, GraphQLNonNull, GraphQLObjectType} from "graphql";
 
 export const BalanceGraphQLType = new GraphQLObjectType({
   name: 'Balance',
   fields: () => ({
-    id: {type: new GraphQLNonNull(GraphQLInt)},
+    id: {type: new GraphQLNonNull(GraphQLID)},
     userId: {type: new GraphQLNonNull(GraphQLInt)},
     deposit: {type: new GraphQLNonNull(GraphQLInt)},
     happinessRate: {type: new GraphQLNonNull(GraphQLInt)},

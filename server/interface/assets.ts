@@ -7,7 +7,7 @@ export const AssetsGraphQLType = new GraphQLObjectType({
     name: {type: new GraphQLNonNull(GraphQLString)},
     ticker: {type: new GraphQLNonNull(GraphQLString)},
     price: {type: new GraphQLNonNull(GraphQLInt)},
-    status: {type: new GraphQLNonNull(GraphQLString)}, // TODO BY Sergei: Don't know how define AssetsStatusEnum enum here.
+    status: {type: new GraphQLNonNull(GraphQLString)}, // TODO BY Sergei: Don't know how to define AssetsStatusEnum enum here.
   })
 })
 

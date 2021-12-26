@@ -5,8 +5,10 @@ import {UserGraphQLType} from "../interface/user";
 import user_service from "../service/user_service";
 import {BalanceGraphQLType} from "../interface/balance";
 import balance_service from "../service/balance_service";
-import {AllAssetsGraphQLType, AssetsGraphQLType, AssetsStatusEnum} from "../interface/assets";
+import {AllAssetsGraphQLType, AssetsStatusEnum} from "../interface/assets";
 import assets_service from "../service/assets_service";
+import {HistoryGraphQLType} from "../interface/history";
+import history_service from "../service/history_service";
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -14,7 +16,7 @@ const RootQuery = new GraphQLObjectType({
     work: {
       type: WorkGraphQLType,
       args: {id: {type: new GraphQLNonNull(GraphQLInt)}},
-      resolve(_, args: {id: number}) {
+      resolve(_, args: { id: number }) {
         return work_service.getById(args.id)
       }
     },
@@ -27,7 +29,7 @@ const RootQuery = new GraphQLObjectType({
     user: {
       type: UserGraphQLType,
       args: {id: {type: new GraphQLNonNull(GraphQLInt)}},
-      resolve(_, args: {id: number}) {
+      resolve(_, args: { id: number }) {
         return user_service.getById(args.id)
       }
     },
@@ -40,7 +42,7 @@ const RootQuery = new GraphQLObjectType({
     balance: {
       type: BalanceGraphQLType,
       args: {id: {type: new GraphQLNonNull(GraphQLInt)}},
-      resolve(_, args: {id: number}) {
+      resolve(_, args: { id: number }) {
         return balance_service.getById(args.id)
       }
     },
@@ -53,7 +55,7 @@ const RootQuery = new GraphQLObjectType({
     userBalance: {
       type: BalanceGraphQLType,
       args: {userId: {type: new GraphQLNonNull(GraphQLInt)}},
-      resolve(_, args: {userId: number}) {
+      resolve(_, args: { userId: number }) {
         return balance_service.getUserBalanceByUserId(args.userId)
       }
     },
@@ -63,11 +65,36 @@ const RootQuery = new GraphQLObjectType({
     assets: {
       type: AllAssetsGraphQLType,
       args: {status: {type: GraphQLString}},
-      resolve(_, args: {status: AssetsStatusEnum}) {
+      resolve(_, args: { status: AssetsStatusEnum }) {
         return assets_service.getAll(args.status)
       }
     },
 
+    // HISTORY
+    history: {
+      type: new GraphQLList(HistoryGraphQLType),
+      resolve() {
+        return history_service.getAll()
+      }
+    },
+
+  }
+})
+// TODO BY SERGEI EENSALU: complete mutations
+const Mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    addHistory: {
+      type: HistoryGraphQLType,
+      args: {
+        id: {type: new GraphQLNonNull(GraphQLInt)},
+        userId: {type: new GraphQLNonNull(GraphQLInt)},
+        date: {type: new GraphQLNonNull(GraphQLString)},
+        parentId: {type: new GraphQLNonNull(GraphQLInt)},
+        parentType: {type: new GraphQLNonNull(GraphQLString)},
+        action: {type: new GraphQLNonNull(GraphQLString)},
+      }
+    }
   }
 })
 
