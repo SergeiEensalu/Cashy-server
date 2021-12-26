@@ -1,9 +1,9 @@
-import {GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString} from "graphql";
+import {GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString} from "graphql";
 
 export const AssetsGraphQLType = new GraphQLObjectType({
   name: 'Assets',
   fields: () => ({
-    id: {type: new GraphQLNonNull(GraphQLInt)},
+    id: {type: new GraphQLNonNull(GraphQLID)},
     name: {type: new GraphQLNonNull(GraphQLString)},
     ticker: {type: new GraphQLNonNull(GraphQLString)},
     price: {type: new GraphQLNonNull(GraphQLInt)},
